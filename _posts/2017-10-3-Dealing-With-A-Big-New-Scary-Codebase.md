@@ -43,13 +43,15 @@ Can we run the API locally? Unfortunately not. The API is closed, and we can't r
 (screenshot of node command, or hard coding)
 
 (screenshot of front end)
+![it works!](/images/frontendworks.jpg)
 
 F yeah, we have a front end up!
 
 It seems to work just fine for US congress, but what about the /sf endpoint, for local san francisco bills?
 
 (screenshot of empty object in react, and sync error)
-https://files.slack.com/files-pri/T2X7DMCD6-F7CU3ST9S/screen_shot_2017-10-03_at_2.05.47_pm.png
+
+![](/images/Screen%20Shot%202017-10-03%20at%202.04.44%20PM.png)
 
 Looks like the bills object is empty. We also have this sync error. We can deduce that the data isn't getting hooked in. Where does sync occur in the project?
 
@@ -76,7 +78,6 @@ Since it seems like we have the dates, it's trying to fetch data from the V1 API
 
 (screenshot of data) Cool. That works just fine. We're getting the data. 
 
-![image-title-here](https://files.slack.com/files-pri/T2X7DMCD6-F7C7KPMDW/pasted_image_at_2017_10_03_05_19_pm.png)
 
 
 So let's check out what's going on in the reducer:
