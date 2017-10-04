@@ -3,7 +3,9 @@ layout: post
 title: Dealing With A Big New Scary Codebase
 ---
 
-There's nothing more disappointing than cracking open an old project of my own, clicking through the files, scanning the code, and wondering "Oh shit, how does this work again?". When working on something for weeks, I feel like the master of that little universe by the time I wrap it up, making that pang of confusion when revisiting an unempowering feeling. 
+**There's nothing more disappointing than cracking open an old project of my own, clicking through the files, scanning the code, and wondering "Oh shit, how does this work again?".**
+
+When working on something for weeks, I feel like the master of that little universe by the time I wrap it up, making that pang of confusion when revisiting an unempowering feeling. 
 
 It's a natural occurance, and thankfully, it can be mitigated by thoughtful and well-positioned comments, as well as having a clean and intuitive project structure to scaffold the whole thing. But what about code that you've never seen before? What if it's devoid of comments, and the structure seems at first glance like an endless sprawl of alien folders that seem to just go deeper and deeper? Worse yet, what if it's half-way through development, doesn't work, and you have little or no context for why?
 
@@ -15,16 +17,18 @@ Myself and a pair-programming pal were recently invited by a friend to take part
 
 Wew, that's a lot of components to digest. There are at least a hundred throughout. Many of them are spawned out of iteration. The rest are deeply nested.
 
-It helps tremendously to just take a moment to calm down and embrace the confusion. It's good to recognize that any issues won't (or can't) be solved right away. You might spend hours, or even days, understanding how all the plumbing in a project fits together, how data flows, and where the edges of the current build drop off. It's like a surgery case. The doctors are going to pore over an MRI to understand what's going on under the hood before they start scooping stuff out willy-nilly.
+**It helps tremendously to just take a moment to calm down and embrace the confusion.** It's good to recognize that any issues won't (or can't) be solved right away. You might spend hours, or even days, understanding how all the plumbing in a project fits together, how data flows, and where the edges of the current build drop off. It's like a surgery case. The doctors are going to pore over an MRI to understand what's going on under the hood before they start scooping stuff out willy-nilly.
 
 So let's do that initial legwork in familiarity. Let's take a look at the repo up on github to see what kind of branches we're working with, to make sure we're on base before we start diving in:
 
 ![](/images/liquidvotebranches.png)
 
 It looks like gh-pages is a whole bunch of commits ahead of master
-v0.1.0 is a few ahead..
+v0.1.0 is lagging behind..
 
-In this case, it looks like v.0.1.0 is the production branch. It's not intuitive at first glance, but the total amount of commits, as well as commits ahead, can be pretty misleading. One of the commits in the production branch had likely taken in a lot of changes and consolidations at once, and has been updated more recently. After we fork and clone down the repo, we'll work from that.
+In this case, it looks like v.0.1.0 is the production branch. It's not intuitive at first glance, but the total amount of commits, as well as commits ahead, can be pretty misleading. The v.0.1.0 branch has been more recently updated, and looks to have a more advanced codebase. Some of the commits in the v0.1.0 branch had likely taken in a lot of changes and consolidations them at once, and had additional changes laid on top.
+
+After we fork and clone down the repo, we'll work from v.0.1.0
 
 Now that we have the project, let's start it up and see if we can get some sort of feedback loop going.
 
@@ -32,7 +36,7 @@ So, unsurprisingly, it doesn't work.
 
 ![](/images/liquidvotelocalhost.png)
 
-So the immediate concern has something to do with the localhost ports the dev server is trying to connect to. Let's do a projectwide search in atom to see where references to 1776 and 2018 are lurking:
+The immediate concern has something to do with the localhost ports the dev server is trying to connect to. Let's do a projectwide search in atom to see where references to 1776 and 2018 are lurking:
 
 <pre><code>
 const plugins = [
