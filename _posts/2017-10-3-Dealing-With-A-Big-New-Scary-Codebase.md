@@ -23,8 +23,7 @@ So let's do that initial legwork in familiarity. Let's take a look at the repo u
 
 ![](/images/liquidvotebranches.png)
 
-It looks like gh-pages is a whole bunch of commits ahead of master
-v0.1.0 is lagging behind..
+It looks like gh-pages is a whole bunch of commits ahead of master, and v0.1.0 is lagging behind..
 
 It might not seem intuitive at first glance, but in this case, v.0.1.0 is the production branch. The total amount of commits, as well as commits ahead, can be pretty misleading. The v.0.1.0 branch has been more recently updated, and looks to have a more advanced codebase. Some of the commits in the v0.1.0 branch had likely taken in a lot of changes and consolidations them at once, and had additional changes laid on top. Lesson learned: *It's important to take a close look at recently-updated branches, rather than just going off commit quantity*.
 
