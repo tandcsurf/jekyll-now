@@ -17,7 +17,7 @@ Myself and a pair-programming pal were recently invited by a friend to take part
 
 Wew, that's a lot of components to digest. There are at least a hundred throughout. Many of them are spawned out of iteration. The rest are deeply nested.
 
-**It helps tremendously to just take a moment to calm down and embrace the confusion.** It's good to recognize that any issues won't (or can't) be solved right away. You might spend hours, or even days, understanding how all the plumbing in a project fits together, how data flows, and where the edges of the current build drop off. It's like a surgery case. The doctors are going to pore over an MRI to understand what's going on under the hood before they start scooping stuff out willy-nilly.
+**It helps tremendously to just take a moment to calm down and embrace the confusion.** It's good to recognize that most issues won't (or can't) be solved right away. You might spend hours, or even days, understanding how all the plumbing in a project fits together, how data flows, and where the edges of the current build drop off. It's like a surgery case. The doctors are going to pore over an MRI to understand what's going on under the hood before they start scooping stuff out willy-nilly.
 
 So let's do that initial legwork in familiarity. Let's take a look at the repo up on github to see what kind of branches we're working with, to make sure we're on base before we start diving in:
 
