@@ -9,19 +9,15 @@ It's a natural occurance, and thankfully, it can be mitigated by thoughtful and 
 
 The feeling of bewilderment that ensues can be a bit like tumbling down a well. You look up, see a pinprick of light at the top, and have a moment of panic. Is it even possible to get out? Should you just give up and resign to living life as a ghoulish well-monster, whose only appearance on the surface will be to haunt people in a blockbuster horror franchise? That's no way to live.
 
-Myself and a pair-programming pal were recently invited by a friend to take part in a project he's contributing to. I've spent the past two months or so living in a blissful world of smaller react projects that are flat and simple enough to where even Redux seems like an unnecessary complication. Looking at this felt like a clusterfuck:
-
-(insert pic of liquid vote project structure)
+Myself and a pair-programming pal were recently invited by a friend to take part in a project he's contributing to. I've spent the past two months or so living in a blissful world of smaller react projects that are flat and simple enough to where even Redux seems like an unnecessary complication. Looking at this felt like a lot in comparison:
 
 ![](/images/voteprojectroot.png)
 
-Wew, that's a lot of components to digest. There are hundreds of them, and many of them are spawned out of iteration. The rest are deeply nested.
+Wew, that's a lot of components to digest. There are at least a hundred throughout. Many of them are spawned out of iteration. The rest are deeply nested.
 
 It helps tremendously to just take a moment to calm down and embrace the confusion. It's good to recognize that any issues won't (or can't) be solved right away. You might spend hours, or even days, understanding how all the plumbing in a project fits together, how data flows, and where the edges of the current build drop off. It's like a surgery case. The doctors are going to pore over an MRI to understand what's going on under the hood before they start scooping stuff out willy-nilly.
 
-So let's do that initial legwork in familiarity. Let's take a look at the repo up on github to see what kind of branches we're working with:
-
-(pic of branches and update dates)
+So let's do that initial legwork in familiarity. Let's take a look at the repo up on github to see what kind of branches we're working with, to make sure we're on base before we start diving in:
 
 ![](/images/liquidvotebranches.png)
 
@@ -34,32 +30,45 @@ Now that we have the project, let's start it up and see if we can get some sort 
 
 So, unsurprisingly, it doesn't work.
 
-(screenshot of console log with 1776 and 2018 not found)
+![](/images/liquidvotelocalhost.png)
 
 So the immediate concern has something to do with the localhost ports the dev server is trying to connect to. Let's do a projectwide search in atom to see where references to 1776 and 2018 are lurking:
 
-(screenshot of webpack)
+<pre><code>
+const plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+    API_URL_V1: `"${process.env.API_URL_V1 || 'http://localhost:1776'}"`,
+    API_URL_V2: `"${process.env.API_URL_V2 || 'http://localhost:2018/v2'}"`,
+  }),
+ </code></pre>
 
 Bingo. Looks like it's a node environment variable thang. Since the API_URL_V1 and API_URL_V2 wasn't defined when I started the dev server, it's defaulting to these local ports. And we're not running anything on them.
 
-Can we run the API locally? Unfortunately not. The API is closed, and we can't really mess with it. But we do have links to the API from elsewhere in the repo, so let's go ahead and make sure the webpack script has access to API_URL_V1 and API_URL_V2 and doesn't default to something we can't run
+Can we run the API locally? Unfortunately not. The API is closed, and we can't really mess with it. But we do have links to the API from elsewhere in the repo, so let's go ahead and make sure the webpack script has access to API_URL_V1 and API_URL_V2 and doesn't default to something we can't run. When starting the dev server in the console, let's set some environment variables:
 
-(screenshot of node command, or hard coding)
+<pre><code>
+API_URL_V1=https://api.liquid.vote API_URL_V2=https://pure-api.liquid.vote npm start
+</pre></code>
 
-(screenshot of front end)
+F yeah, we have a front end up:
+
 ![it works!](/images/frontendworks.jpg)
-
-F yeah, we have a front end up!
 
 It seems to work just fine for US congress, but what about the /sf endpoint, for local san francisco bills?
 
-(screenshot of empty object in react, and sync error)
+Looks like the bills object is empty:
 
 ![](/images/Screen%20Shot%202017-10-03%20at%202.04.44%20PM.png)
 
-Looks like the bills object is empty. We also have this sync error. We can deduce that the data isn't getting hooked in. Where does sync occur in the project?
+We also have this sync error. Where does sync occur in the project?
 
-(screenshot or snippet of sync in the bill file).
+A quick project-wide search turns up this action being dispatched if bills data is missing.
+
+![](/images/liquidvotesyncerror.jpg)
+
 <pre><code>
 componentDidMount() {
     const { dispatch, isVerified, match, sessionId } = this.props
@@ -80,13 +89,12 @@ componentDidMount() {
 
 Since it seems like we have the dates, it's trying to fetch data from the V1 API URL. Before we get ahead of ourselves, let's drop a console log in there to make sure the data is working out. If the API is goofed up, our options for recourse here are looking pretty bad.
 
-(screenshot of data) Cool. That works just fine. We're getting the data. 
+Cool. That works just fine. We're getting the data:
 
-
+![](/images/liquidvotedataworks.jpg)
 
 So let's check out what's going on in the reducer:
 
-(screenshot or snippet or reducer)
 <pre><code>
 case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
     console.log('sync bills: ', action)
