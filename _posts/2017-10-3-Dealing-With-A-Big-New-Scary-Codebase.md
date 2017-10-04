@@ -54,7 +54,7 @@ Can we run the API locally? Unfortunately not. The API is closed, and we can't r
 
 <pre><code>
 API_URL_V1=https://api.liquid.vote API_URL_V2=https://pure-api.liquid.vote npm start
-</pre></code>
+</code></pre>
 
 F yeah, we have a front end up:
 
