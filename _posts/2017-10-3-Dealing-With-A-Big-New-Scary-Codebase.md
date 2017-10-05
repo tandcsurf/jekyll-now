@@ -9,13 +9,16 @@ When working on something for weeks, I feel like the master of that little unive
 
 It's a natural occurance, and thankfully, it can be mitigated by thoughtful and well-positioned comments, as well as having a clean and intuitive project structure to scaffold the whole thing. But what about code that you've never seen before? What if it's devoid of comments, and the structure seems at first glance like an endless sprawl of alien folders that seem to just go deeper and deeper? Worse yet, what if it's half-way through development, doesn't work, and you have little or no context for why?
 
-The feeling of bewilderment that ensues can be a bit like tumbling down a well. You look up, see a pinprick of light at the top, and have a moment of panic. Is it even possible to get out? Should you just give up and resign to living life as a ghoulish well-monster, whose only appearance on the surface will be to haunt people in a blockbuster horror franchise? That's no way to live.
+The feeling of bewilderment that ensues can be a bit like tumbling down a well.
+<img src="https://media.giphy.com/media/TQ33Gdvv3K1sk/giphy-downsized.gif" />
 
-Myself and a pair-programming pal were recently invited by a friend to take part in a project he's contributing to. I've spent the past two months or so living in a blissful world of smaller react projects that are flat and simple enough to where even Redux seems like an unnecessary complication. Looking at this felt like a lot in comparison:
+You look up, see a pinprick of light at the top, and have a moment of panic. Is it even possible to get out? Should you just give up and resign to living life as a ghoulish well-monster, whose only appearance on the surface will be to haunt people in a blockbuster horror franchise? That's no way to live.
+
+Myself and a pair-programming pal were recently invited by a friend to take part in a project he's contributing to. My last project was a very straightforward UI, so this project provided a swing in the other direction:
 
 ![](/images/voteprojectroot.png)
 
-Wew, that's a lot of components to digest. There are at least a hundred throughout. Many of them are spawned out of iteration. The rest are deeply nested.
+The project has around a hundred components, just enough to make tracing through them not immediately clear. Many of these components are spawned out of iteration. The rest are deeply nested.
 
 **It helps tremendously to just take a moment to calm down and embrace the confusion.** It's good to recognize that most issues won't (or can't) be solved right away. You might spend hours, or even days, understanding how all the plumbing in a project fits together, how data flows, and where the edges of the current build drop off. It's like a surgery case. The doctors are going to pore over an MRI to understand what's going on under the hood before they start scooping stuff out willy-nilly.
 
