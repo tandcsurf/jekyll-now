@@ -14,7 +14,7 @@ The feeling of bewilderment that ensues can be a bit like tumbling down a well.
 
 You look up, see a pinprick of light at the top, and have a moment of panic. Is it even possible to get out? Should you just give up and resign to living life as a ghoulish well-monster, whose only appearance on the surface will be to haunt people in a blockbuster horror franchise? That's no way to live.
 
-Myself and a pair-programming pal were recently invited by a friend to take part in a project he's contributing to. My last project was a very straightforward UI, so this project provided a swing in the other direction:
+Me and a pair-programming pal are contributing to `liquid.vote`. The project is in progress, but you can read about it here: https://liquid.vote/about. My last project was a very straightforward UI with little plumbing beyond calculating element positions for CSS effects, so this provided a swing in the other direction:
 
 ![](/images/voteprojectroot.png)
 
