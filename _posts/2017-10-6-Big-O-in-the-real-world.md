@@ -12,9 +12,17 @@ But first: Having slow performance right out of the gate isn't bad - it means yo
 ![](/images/guygirlmeme.jpg)
 
 
-In the app we're making (link here), we get data objects that get filtered down to their date. These data objects could potentially be gigantic. We need to remove duplicate dates, since the component we're concerned with only renders one date on a date menu, revealing the associated bills after.
+Right now, I'm working on liquid.vote(link to website), a cool project I talked about rolling my sleeves up on in my last post(link to post). An integral part of the UI is displaying a past legislative agenda, which is organized by date components.
 
-There are a few ways to remove duplicates
+(screen of /sf agenda)
+
+When you click through the dates on the SF agenda, there are very few bills, in contrast to /nyc (what I'm working on), where each date has a hundred or more bills - the sample I got from our /nyc scraping API turned out a dousey:
+
+(screen of bills for one date)
+
+Until we refine the legislative agenda-scraping API for the /nyc endpoint, we'll already be doing some lifting on the client side to get an array of dates out of the bills array. Eventually, the dates array could have thousands of entries.
+
+Since we're ultimately going to map over the dates array with the goal of only laying down one date component per date, we'll need to remove all the duplicates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something sexy off the vine.
 
 Example one: n2
 
