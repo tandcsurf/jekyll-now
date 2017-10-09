@@ -72,7 +72,9 @@ function uniqueFaster(a) {
 
 However, this is a refinement. If we want something that's a good middle ground, there's another solution, using ES6 Sets. It's relatively quick, and avoids the imperative soup above.
 
+<pre><code>
 const uniqueArray = array.from(new Set(a));
+</code></pre>
 
 The creation of the Set has a time complexity similar to our solution above. I'm assuming that array.From has an indexing cost for each element, giving it a time complexity of O(n). If the combined operation is O(2n), this still beats the pants off of quadratic time, and is a very clean one-line solution. For a quick and concise build, this is a great solution, and the one we went with for the project.
 
