@@ -12,7 +12,7 @@ But first: Having slow performance right out of the gate isn't bad - it means yo
 ![](/images/guygirlmeme.jpg)
 
 
-Right now, I'm working on liquid.vote(link to website), a cool project I talked about rolling my sleeves up on in my last post(link to post). An integral part of the UI is displaying a past legislative agenda, which is organized by date components.
+Right now, I'm working on <a href="https://liquid.vote">liquid.vote</a>, a cool project I talked about rolling my sleeves up on in my <a href="https://tandcsurf.github.io/Dealing-With-A-Big-New-Scary-Codebase/">last post</a>. An integral part of the UI is displaying a past legislative agenda, which is organized by date components.
 
 (screen of /sf agenda)
 
