@@ -13,18 +13,19 @@ But sooner or later:
 
 ![](/images/guygirlmeme.jpg)
 
+The exponential increase in time that comes from slower algorithms is going to be something worth addressing.
 
 Right now, I'm working on <a href="https://liquid.vote">liquid.vote</a>, a cool project I talked about rolling my sleeves up on in my <a href="https://tandcsurf.github.io/Dealing-With-A-Big-New-Scary-Codebase/">last post</a>. An integral part of the UI is displaying a past legislative agenda, which is organized by date components:
 
 ![](/images/liquidvotesf.png)
 
-When you click through the dates on the SF agenda, there are very few bills, in contrast to /nyc (what I'm working on), where each date has a hundred or more bills - the sample I got from our /nyc scraping API turned out a doozy:
+When you click through the dates on the SF agenda, there are very few bills displayed, in contrast to /nyc (what I'm working on), where each date has a hundred or more bills. The sample I got from our /nyc scraping API turned out a doozy:
 
 ![](/images/liquidvotenycdata.png)
 
-Until we refine the legislative agenda-scraping API for the /nyc endpoint, we'll already be doing some lifting on the client side to get an array of dates out of the bills array. Eventually, the dates array could have thousands of entries.
+Until we refine the /nyc bill-scraping API to provide us an array of unique agenda dates, we're going to have to extract the dates from the bills. Since there are more than one bill per date, by the time we're done extracting, we'll have a bunch of duplicates in our array.
 
-Since we're ultimately going to map over the dates array with the goal of only laying down one date component per date, we'll need to remove all the duplicates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something fast and efficient off the vine, using a little big of big O to forge comparisons.
+Since we're ultimately going to map over the dates array with the goal of only laying down one date component per date, we'll need to remove all the duplicate dates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something fast and efficient off the vine, using a little big of big O to forge comparisons.
 
 One concise way to do this is with filter:
 
