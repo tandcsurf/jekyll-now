@@ -16,7 +16,7 @@ Right now, I'm working on <a href="https://liquid.vote">liquid.vote</a>, a cool 
 
 ![](/images/liquidvotesf.png)
 
-When you click through the dates on the SF agenda, there are very few bills, in contrast to /nyc (what I'm working on), where each date has a hundred or more bills - the sample I got from our /nyc scraping API turned out a dousey:
+When you click through the dates on the SF agenda, there are very few bills, in contrast to /nyc (what I'm working on), where each date has a hundred or more bills - the sample I got from our /nyc scraping API turned out a doozy:
 
 ![](/images/liquidvotenycdata.png)
 
