@@ -79,6 +79,6 @@ However, this is a refinement. If we want something that's a good middle ground,
 const uniqueArray = array.from(new Set(a));
 </code></pre>
 
-The creation of the Set has a time complexity similar to our solution above. I'm assuming that array.From has an indexing cost for each element, giving it a time complexity of O(n). If the combined operation is O(2n), this still beats the pants off of quadratic time, and is a very clean one-line solution. Since this is quick and concise, we went ahead and stuck with this, making note that it could always be swapped out later.
+The creation of the Set has a time complexity similar to our solution above. I'm assuming that <code>array.From()</code> has an indexing cost for each element, giving it a time complexity of O(n). If the combined operation is O(2n), this still beats the pants off of quadratic time, and is a very clean one-line solution. Since this is quick and concise, we went ahead and stuck with this, making note that it could always be swapped out later.
 
 
