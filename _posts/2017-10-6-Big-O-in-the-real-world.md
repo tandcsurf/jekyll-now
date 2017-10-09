@@ -39,7 +39,7 @@ This is pretty straightforward, and totally works. Filter iterates over the date
 
 What about underscore or Lo_Dash?
 
-These work similarly to the function above, and also result in quadratic time (O(N^2).
+Their solutions work similarly to the function above, and also result in quadratic time (O(N^2).
 
 Thankfully, we can use a hash table to remove duplicates much more efficiently:
 
