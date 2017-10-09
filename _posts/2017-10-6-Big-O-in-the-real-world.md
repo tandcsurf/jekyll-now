@@ -7,7 +7,9 @@ For most people learning software engineering, big O notation is initially cast 
 
 If you're developing a simple UI or small one-page app, your low hanging fruit for perfomance might be as simple as debouncing a nifty scroll event function. But what happens when you build an app that plays with a lot of data? And what if that data needs to be sorted out client-side before you can hook it into your UI? Your app might now be running as smooth as a dolphin trapped in a brillo-pad factory. And that's sad. What can we do to free the dolphin?
 
-But first: Having slow performance right out of the gate isn't bad - it means you built something. Perfectionism has a way of making doable things seem like moving mountains, so it's good not to sweat refinements. While it's good to take the time to think carefully about the shape of your data and how to build a UI around it, data speed can take a back seat. But sooner or later, performance will catch your eye.
+But first: Having slow performance right out of the gate isn't bad - it's good not to sweat refinements. While it's good to take the time to think carefully about the shape of your data and how to build a UI around it, data speed can take a back seat til later.
+
+But sooner or later:
 
 ![](/images/guygirlmeme.jpg)
 
@@ -22,7 +24,7 @@ When you click through the dates on the SF agenda, there are very few bills, in 
 
 Until we refine the legislative agenda-scraping API for the /nyc endpoint, we'll already be doing some lifting on the client side to get an array of dates out of the bills array. Eventually, the dates array could have thousands of entries.
 
-Since we're ultimately going to map over the dates array with the goal of only laying down one date component per date, we'll need to remove all the duplicates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something sexy off the vine.
+Since we're ultimately going to map over the dates array with the goal of only laying down one date component per date, we'll need to remove all the duplicates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something fast and efficient off the vine, using a little big of big O to forge comparisons.
 
 One concise way to do this is with filter:
 
@@ -49,7 +51,7 @@ function unique(array) {
 }
 </code></pre>
 
-This works by placing each item in a hashtable, and doing an instant lookup of each item along the way to see if it's already in the table. It's worth noting that hash keys can only be numeric strings, but thankfully, that's exactly the data we're working with for this project. This gives us linear time: O(n), which is way faster than the above solution.
+This works by placing each item in a hash table, and doing an instant lookup of each item along the way to see if it's already in the table. It's worth noting that hash keys don't distinguish between numbers and numeric strings, but thankfully, our data is purely numeric strings. This method gives us linear time: O(n), which will be way faster than the first code snippet.
 
 Given the general "expense" of function calls, we can speed up the above even faster by replacing filter with a loop:
 
@@ -76,6 +78,6 @@ However, this is a refinement. If we want something that's a good middle ground,
 const uniqueArray = array.from(new Set(a));
 </code></pre>
 
-The creation of the Set has a time complexity similar to our solution above. I'm assuming that array.From has an indexing cost for each element, giving it a time complexity of O(n). If the combined operation is O(2n), this still beats the pants off of quadratic time, and is a very clean one-line solution. For a quick and concise build, this is a great solution, and the one we went with for the project.
+The creation of the Set has a time complexity similar to our solution above. I'm assuming that array.From has an indexing cost for each element, giving it a time complexity of O(n). If the combined operation is O(2n), this still beats the pants off of quadratic time, and is a very clean one-line solution. Since this is quick and concise, we went ahead and stuck with this, making note that it could always be swapped out later.
 
 
