@@ -12,13 +12,13 @@ But first: Having slow performance right out of the gate isn't bad - it means yo
 ![](/images/guygirlmeme.jpg)
 
 
-Right now, I'm working on <a href="https://liquid.vote">liquid.vote</a>, a cool project I talked about rolling my sleeves up on in my <a href="https://tandcsurf.github.io/Dealing-With-A-Big-New-Scary-Codebase/">last post</a>. An integral part of the UI is displaying a past legislative agenda, which is organized by date components.
+Right now, I'm working on <a href="https://liquid.vote">liquid.vote</a>, a cool project I talked about rolling my sleeves up on in my <a href="https://tandcsurf.github.io/Dealing-With-A-Big-New-Scary-Codebase/">last post</a>. An integral part of the UI is displaying a past legislative agenda, which is organized by date components:
 
-(screen of /sf agenda)
+![](/images/liquidvotesf.png)
 
 When you click through the dates on the SF agenda, there are very few bills, in contrast to /nyc (what I'm working on), where each date has a hundred or more bills - the sample I got from our /nyc scraping API turned out a dousey:
 
-(screen of bills for one date)
+![](/images/liquidvotenycdata.png)
 
 Until we refine the legislative agenda-scraping API for the /nyc endpoint, we'll already be doing some lifting on the client side to get an array of dates out of the bills array. Eventually, the dates array could have thousands of entries.
 
