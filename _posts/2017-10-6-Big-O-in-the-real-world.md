@@ -25,7 +25,7 @@ When you click through the dates on the SF agenda, there are very few bills disp
 
 Until we refine the /nyc bill-scraping API to provide us an array of unique agenda dates, we're going to have to extract the dates from the bills. Since there are more than one bill per date, by the time we're done extracting, we'll have a bunch of duplicate dates in our array.
 
-Since we're ultimately going to map over the dates array with the goal of only laying down one component per date, we'll need to remove all the duplicate dates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something fast and efficient off the vine, using a little big of big O to forge comparisons.
+Since we're ultimately going to map over the dates array with the goal of only laying down one component per date, we'll need to remove all the duplicate dates. There are a bunch of ways to remove duplicates from an array, so let's take a look at them, and see if we can pluck something fast and efficient off the vine, using a little bit of big O to forge comparisons.
 
 One concise way to do this is with filter:
 
