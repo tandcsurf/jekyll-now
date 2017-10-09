@@ -3,7 +3,7 @@ layout: post
 title: Dealing With A Big New Scary Codebase
 ---
 
-**There's nothing more disappointing than cracking open an old project of my own, clicking through the files, scanning the code, and wondering "Oh shit, how does this work again?".**
+There's nothing more disappointing than cracking open an old project of my own, clicking through the files, scanning the code, and wondering "Oh shit, how does this work again?".
 
 When working on something for weeks, I feel like the master of that little universe by the time I wrap it up, making that pang of confusion when revisiting an unempowering feeling. 
 
