@@ -3,7 +3,7 @@ layout: post
 title: Zen and the Art of Reducer Maintenance
 ---
 
-Since React is essentially a group of UI components painted and propped up (pun intended) by its data, it's important to understand the data flow. A wise man once told me "The soul of a react app is in the reducers." With that in mind, I wanted to get a hang of the most-used reducer in the app I'm working on, in order to have a better intuition for its issues.
+Since React is essentially a group of UI components painted and propped up (pun intended) by its data, it's important to understand the data flow. A wise man once told me "The soul of a react app is in the reducers." With that in mind, I wanted to get a hang of the most-used reducer in the app I'm working on, in order to have a better intuition while contributing fixes and new features.
 
 The app is <a href="http://united.vote">united.vote</a>, and I began to unpack it in <a href="https://tandcsurf.github.io/Dealing-With-A-Big-New-Scary-Codebase/">this post</a>. One of the things that stands out about the code, is the ubiquity of the "SYNC_BILLS" reducer being called. It seems to be the primary means of hydrating the app with data, as well as updating it, in several components throughout the app.
 
