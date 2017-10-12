@@ -98,7 +98,7 @@ Since it seems like we have the dates, it's trying to fetch data from the V1 API
 
 Cool. That works just fine. We're getting the data:
 
-![](/images/liquidvotedataworks.jpg)
+![](/images/liquidvotedataworks.png)
 
 So let's check out what's going on in the reducer:
 
