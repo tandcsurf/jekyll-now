@@ -36,10 +36,10 @@ case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
   
  And though "very concise" code has a brevity that's eloquent to behold, easy readability usually takes a bit of a hit. So let's break this down:
  
-```
+<pre><code>
 const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
 const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
-```
+</code></pre>
 
 We declare oldBills, and set it equal to the result of a ternary operator. Does the action object have a 'replace' property? If so, set oldBills to an empty array, giving us a blank slate. If not, oldBills will be set to the current bills in state, specific to the [action.legislature] or [action.date] specified in the action that was dispatched.
 
@@ -57,11 +57,11 @@ So now, assuming we had a couple of dusty oldBills chuckling around the woodwork
 
 Next up, we're gonna start bringing in some fresh data:
 
-```
+<pre><code>
 action.bills.forEach((bill) => {
   bills[bill.bill_uid] = bill
 })
-```
+</code></pre>
 
 action.bills is our action payload, and the app gets it from a data API. It's a big chunk of JSON, an object full of objects.
 
@@ -73,10 +73,10 @@ We end up with the same structure we have above, an object of ``bill_uid`` keys,
 
 So now that we've either updated or filled in our empty bills object, the reducer looks to want to reformat it:
 
-```
+<pre><code>
 const newBills = _.orderBy(Object.values(bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
 newBills.synced = action.synced
-```
+</code></pre>
 
 The end result is an array of objects. Working our way from the inside-out:
 
@@ -88,13 +88,13 @@ And now, lodash provides us an orderBy function, which is supposed to reach into
 
 And after that, we return an updated copy of state:
 
-```
+<pre><code>
 return { ...state,
       bills: { ...state.bills,
         [action.legislature || action.date]: newBills,
       },
     }
-```
+</code></pre>
 
 Now that we've traced through the code and understood it, what stands out?
 
@@ -102,7 +102,9 @@ First off, orderBy isn't actually reordering anything. Could it be because the v
 
 Looking back at our ternary in oldBills:
 
-``const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])``
+<pre><code>
+const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])``
+</code></pre>
 
 It looks like it always returns an empty array. The only time I found a relevant reference to "replace" in the code was in a search function that isn't wired up yet. We can probably chalk this up to lots of the app's plumbing being unfinished.
 
