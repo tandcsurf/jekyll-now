@@ -15,14 +15,10 @@ case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
     const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
 
     action.bills.forEach((bill) => {
-      console.log(bills[bill.bill_uid], "bills[bill.bill_uid]");
       bills[bill.bill_uid] = bill
-      // console.log(bills, "bills inside of the forEach");
     })
-    console.log(bills, "bills")
 
     const newBills = _.orderBy(Object.values(bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
-    console.log(newBills, "newBills")
     newBills.synced = action.synced
 
     return { ...state,
@@ -30,7 +26,7 @@ case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
         [action.legislature || action.date]: newBills,
       },
     }
-  </code></pre>
+</code></pre>
   
   Production code isn't always an easy thing to scan. In our case variables are declared, and objects and arrays are worked on, but the order is a little scattered. On top of that, this code is very concise.
   
