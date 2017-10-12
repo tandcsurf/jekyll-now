@@ -71,12 +71,45 @@ We end up with the same structure we have above, an object of ``bill_uid`` keys,
 
 ``{us-115-s-res-327: {…}, us-115-s-res-1866: {…}, us-115-hr-res-3889: {…}, us-115-hr-res-3823: {…}}``
 
-So now that we've either updated or created our bills object, the reducer reformats the data before returning an updated copy of state:
+So now that we've either updated or filled in our empty bills object, the reducer looks to want to reformat it:
 
 ```
 const newBills = _.orderBy(Object.values(bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
 newBills.synced = action.synced
 ```
+
+The end result is an array of objects. Working our way from the inside-out:
+
+Object.values is taking our bills object full of bills, and turns it into an array of objects. In essence, the bill_uid keys get lopped off, and we're left with an array:
+
+``[{…},{…},{…},{…}]``
+
+And now, lodash provides us an orderBy function, which is supposed to reach into the objects, and sort them according to the ``last_action_date`` and ``bill_uid``.
+
+And after that, we return an updated copy of state:
+
+```
+return { ...state,
+      bills: { ...state.bills,
+        [action.legislature || action.date]: newBills,
+      },
+    }
+```
+
+Now that we've traced through the code and understood it, what stands out?
+
+First off, orderBy isn't actually reordering anything. Could it be because the values it's looking for are numerical strings instead of numbers? For now, it's not a breaking change.
+
+Looking back at our ternary in oldBills:
+
+``const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])``
+
+It looks like it always returns an empty array. The only time I found a relevant reference to "replace" in the code was in a search function that isn't wired up yet. We can probably chalk this up to lots of the app's plumbing being unfinished.
+
+Those are just two things that immediately presented themselves. Now, with a better understanding, whenever I see SYNC_BILLS popping off throughout the components, I'll have a good intuition of what exactly is happening to the data that's being dispatched. And since the legislation data drives a vast majority of the components, I'd say this was time well spent.
+
+
+
 
 
 
