@@ -63,7 +63,7 @@ action.bills is our action payload, and the app gets it from a data API. It's a 
 
 So now we're going to iterate over it, and for each bill that we've pulled in via fetch and dispatched to our reducer, we're going to see if see if the bills object above has a match for the ``bill_uid``. If so, we're going to update it with that bill. However, if bills is empty, or the ``bill_uid`` doesn't exist, we'll add it to the object.
 
-We end up with the same structure we have above, an object of ``bill_uid`` keys, and the associated values, like above:
+We end up with the same structure we have above in ``const bills``, which is uncoincental. It's easy to miss amongst all this billery, but this forEach is actually altering ``const bills`` by side effect. We still have an object of ``bill_uid`` keys, and the associated values, like above:
 
 ``{us-115-s-res-327: {…}, us-115-s-res-1866: {…}, us-115-hr-res-3889: {…}, us-115-hr-res-3823: {…}}``
 
