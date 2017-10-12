@@ -28,9 +28,9 @@ case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
     }
 </code></pre>
   
-  Production code isn't always an easy thing to scan. In our case variables are declared, and objects and arrays are worked on, but the order is a little scattered. On top of that, this code is very concise.
+  Production code isn't always an easy thing to scan. In our case, variables are declared, and objects and arrays are worked on, but the order is a little scattered. On top of that, this code is very concise.
   
- And though "very concise" code has a brevity that's eloquent to behold, easy readability usually takes a bit of a hit. So let's break this down:
+ And though "very concise" code has a brevity that's eloquent to behold, easy readability usually takes a bit of a hit. So let's break this reducer down bit by bit:
  
 <pre><code>
 const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
