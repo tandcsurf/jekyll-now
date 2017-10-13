@@ -9,7 +9,7 @@ The app is <a href="http://united.vote">united.vote</a>, and I began to unpack i
 
 Here it is as I found it:
 
-~~~
+<pre><code>
 case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
     const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
     const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
@@ -26,7 +26,7 @@ case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
         [action.legislature || action.date]: newBills,
       },
     }
-~~~
+</code></pre>
   
   Production code isn't always an easy thing to scan. In our case, variables are declared, and objects and arrays are worked on, but the order is a little scattered. On top of that, this code is very concise.
   
